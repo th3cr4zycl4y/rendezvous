@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useState, useEffect, ReactNode, FC } from 'react';
 import axios from 'axios';
 
 
@@ -33,7 +33,7 @@ interface EventContextType {
 
 export const EventContext = createContext<EventContextType | undefined>(undefined);
 
-const EventProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+const EventProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
 

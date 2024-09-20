@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Box, Button, Skeleton } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';

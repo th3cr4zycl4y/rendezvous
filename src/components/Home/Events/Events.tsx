@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { Button, Pagination } from '@mui/material';
 import NorthEastIcon from '@mui/icons-material/NorthEast';
 import { EventContext } from '../../../context/EventContextProvider';
@@ -21,10 +21,9 @@ const Events = () => {
   const currentEvents = events.slice(indexOfFirstEvent, indexOfLastEvent);
   const totalPages = Math.ceil(events.length / eventsPerPage);
 
-  const handleChange = (event: ChangeEvent<unknown>, value: number) => {
+  const handleChange = (_: unknown, value: number) => {
     setPage(value);
   };
-
   return (
     <section className="events">
       <div className="container">
