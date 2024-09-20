@@ -1,0 +1,693 @@
+@import './fonts';
+@import './mixins';
+
+$primary-color: #432361;
+$text-color: #9B51E0;
+$button-color: #783EAD;
+$background-color: #F9F9F9;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 1rem;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'GilroyRegular', sans-serif;
+  background-color: $background-color;
+  color: $text-color;
+  margin: 0;
+  padding: 0;
+}
+
+section .arrow-button {
+  text-transform: none;
+  box-shadow: none;
+  background-color: transparent;
+  color: $primary-color;
+  font-size: 1rem;
+}
+
+.logo {
+  font-family: 'GilroyBold', sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  color: $primary-color;
+}
+
+.menu-button {
+  margin-left: 8px !important;
+  text-transform: none !important;
+  font-weight: bold !important;
+  font-size: 16px !important;
+  position: relative;
+
+  &:hover {
+    background-color: transparent !important;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 3px;
+      background-color: $primary-color;
+      transform: scaleX(1);
+      transition: transform 0.3s ease;
+    }
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: $primary-color;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+}
+
+
+.hero {
+  height: 75vh;
+  width: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/hero.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include respond-to('small') {
+    height: 100vh;
+  }
+
+
+  .container {
+    max-width: 1312px;
+    width: 90%;
+
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 0 auto;
+    padding-bottom: 30px;
+
+    @include respond-to('small') {
+      gap: 10px;
+    }
+
+    @include respond-to('medium') {
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 3.125rem;
+
+      width: 90%;
+    }
+
+    .intro {
+      width: 531px;
+
+      @include respond-to('medium') {
+        width: 100%;
+      }
+
+
+      h1 {
+        color: white;
+        font-size: 2rem;
+        font-weight: 700;
+        width: 90%;
+
+      }
+    }
+
+    .search {
+      height: 6.25rem;
+      width: 37.5rem;
+      background-color: white;
+      border-radius: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      @include respond-to('small') {
+        width: 100%;
+        flex-direction: column;
+        height: fit-content;
+        justify-content: center;
+        align-items: center;
+      }
+
+      @include respond-to('medium') {
+        width: 100%;
+      }
+
+      .search-bar {
+        @include flex-center;
+        width: 50%;
+
+        @include respond-to('small') {
+          width: 100%;
+          margin-top: 10px;
+        }
+      }
+
+
+      input,
+      select {
+        border: none;
+        padding: 10px;
+      }
+
+      input {
+        width: 60%;
+        height: 30%;
+
+        @include respond-to('small') {
+          width: 70%;
+          padding: 15px;
+        }
+      }
+
+      select {
+        background-color: transparent;
+        width: 20%;
+
+        // height: 30%;
+        @include respond-to('small') {
+          width: 70%;
+        }
+      }
+
+      .search-button {
+
+        @include respond-to('small') {
+          width: 70%;
+          margin: 10px;
+          margin-bottom: 20px;
+        }
+      }
+
+      .divider {
+        width: 1px;
+        height: 50%;
+        background-color: lightgrey;
+        border-radius: 10px;
+        margin: 0 5px;
+
+        @include respond-to('small') {
+          width: 80%;
+          height: 1px;
+          margin: 5px 0;
+        }
+      }
+    }
+
+  }
+}
+
+
+// Event Styling
+
+.events {
+  min-height: 738px;
+
+  .container {
+    @include flex-center;
+    flex-direction: column;
+    max-width: 1312px;
+    width: 90%;
+    margin: 4rem auto;
+
+    .title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 2.9375rem;
+
+      h2 {
+        font-size: 2rem;
+        font-family: 'GilroyBold', sans-serif;
+        font-weight: 700;
+        line-height: 37.5px;
+      }
+
+
+    }
+
+    .cards {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      .card {
+        max-width: 26.3125rem;
+        margin: 1.25rem 0;
+        min-height: 488px;
+        width: 32%;
+
+        @include respond-to('small') {
+          min-width: 100%;
+        }
+
+        .card-content {
+          padding: 1.25rem;
+
+          .card-title {
+            font-family: 'GilroyBold', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+          }
+
+          .card-date {
+            font-size: 14px;
+            font-family: "GilroyMedium", sans-serif;
+            line-height: 18.75px;
+
+            .dot {
+              display: inline-block;
+              width: 4px;
+              height: 4px;
+              background-color: black;
+              border-radius: 50%;
+              vertical-align: middle;
+              margin: 0 5px;
+            }
+          }
+
+          .card-description {
+            font-size: 14px;
+            font-family: "GilroyRegular", sans-serif;
+            line-height: 18.75px;
+            // margin-top: 12px;
+            margin: 1rem 0;
+          }
+
+          .arrow-button {
+            font-size: 14px;
+            margin-bottom: 33px;
+
+            &:hover {
+              box-shadow: none;
+
+              &::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: 3px;
+                background-color: $primary-color;
+                transform: scaleX(1);
+                transition: transform 0.3s ease;
+              }
+            }
+
+            &::after {
+              content: "";
+              position: absolute;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              height: 1px;
+              background-color: $primary-color;
+              transform: scaleX(0);
+              transition: transform 0.3s ease;
+            }
+          }
+        }
+
+        @include respond-to('small') {
+          width: 100%;
+        }
+
+        &:hover {
+          border: 1px solid $text-color;
+
+          .card-content {
+            border-top: 2px solid $text-color;
+          }
+
+        }
+      }
+
+
+    }
+  }
+
+}
+
+// Discover component Styling
+
+.discover {
+  max-width: 1312px;
+  margin: 3.125rem auto;
+  width: 90%;
+  min-height: 47.125rem;
+
+  @include flex-center;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    @include respond-to('small') {
+      flex-direction: column;
+    }
+
+
+    .title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      max-width: 390px;
+
+      h2 {
+        font-size: 1.6rem;
+        margin-bottom: 24px;
+      }
+    }
+
+    .discover-cards {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      height: fit-content;
+
+      @include respond-to('small') {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 4rem;
+      }
+
+      // margin-top: 7.9375rem;
+
+      .card1 {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/discover1.jpg');
+
+        &:hover {
+          background-color: #9B51E0;
+        }
+      }
+
+      .card2 {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/discover2.jpg');
+      }
+
+      .card3 {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/discover3.jpg');
+      }
+
+      .discover-card {
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        width: 49%;
+        height: 240px;
+        color: white;
+        font-weight: 700;
+        margin-bottom: 24px;
+        border-radius: 20px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+          border: 1px solid $text-color;
+
+        }
+
+        @include respond-to('small') {
+          width: 100%;
+
+        }
+
+        // @include flex-center
+      }
+    }
+  }
+}
+
+// Footer Styling
+
+.footer {
+  background-color: $primary-color;
+  color: white;
+  width: 100%;
+  min-height: 343px;
+
+  .container {
+    max-width: 1312px;
+    width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    padding: 60px 0;
+
+    @include respond-to('small') {
+      flex-direction: column;
+    }
+
+
+    .footer-logo {
+      font-family: 'GilroyBold', sans-serif;
+      font-weight: 700;
+      font-size: 2rem;
+    }
+
+    .left {
+      width: 332px;
+
+      p {
+        font-size: 1rem;
+        font-weight: 300;
+      }
+    }
+
+    .right {
+      display: flex;
+      gap: 50px;
+      width: 662px;
+      justify-content: space-between;
+
+      @include respond-to('small') {
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 3rem;
+      }
+
+      .links {
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+
+        ul {
+          list-style-type: none;
+
+          li {
+            margin: 10px 0;
+
+            a {
+              text-decoration: none;
+              color: white;
+            }
+          }
+
+          .address {
+            width: 240px;
+          }
+        }
+      }
+    }
+
+
+  }
+}
+
+.event-detail {
+  min-height: 738px;
+
+  .container {
+    @include flex-center;
+    flex-direction: column;
+    max-width: 1312px;
+    width: 90%;
+    margin: 4rem auto;
+
+
+    .event-image {
+      max-width: 1311px;
+      height: 480px;
+      width: 100%;
+      margin-top: 5.94rem;
+
+
+      @include respond-to('small') {
+        min-width: 100%;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 20px;
+      }
+    }
+
+    .event-content {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-top: 2.5rem;
+
+      @include respond-to('small') {
+        width: 100%;
+        flex-direction: column;
+      }
+
+      .event-info {
+        max-width: 875px;
+
+
+        .event-title {
+          font-size: 24px;
+          font-family: 'GilroyBold', sans-serif;
+          font-weight: 700;
+          line-height: 37.5px;
+        }
+
+        .event-date {
+          font-size: 14px;
+          font-family: "GilroyRegular", sans-serif;
+          line-height: 18.75px;
+          flex-wrap: wrap;
+          margin-top: 1rem;
+
+          .flex {
+            display: flex;
+            gap: 24px;
+          }
+
+          .event-data-icon {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 0;
+          }
+
+
+        }
+
+        .event-description {
+
+          margin-top: 3.125rem;
+
+          h3 {
+            font-size: 1rem;
+            font-family: "GilroyBold", sans-serif;
+            line-height: 24px;
+          }
+
+          p {
+            font-size: 1rem;
+            font-family: "GilroyRegular", sans-serif;
+            line-height: 24px;
+            margin: 1.25rem 0;
+          }
+        }
+
+        .event-price {
+          min-width: 244px;
+
+          h3 {
+            font-size: 1rem;
+            font-family: "GilroyBold", sans-serif;
+            line-height: 24px;
+          }
+
+          .event-amount {
+            display: flex;
+            gap: 4rem;
+            margin-top: 20px;
+
+            h4 {
+              font-size: 1.25rem;
+              font-family: "GilroyMedium", sans-serif;
+              font-weight: 500;
+              line-height: 24px;
+            }
+
+            p {
+              font-size: 1rem;
+              font-family: "GilroyBold", sans-serif;
+              font-weight: 700;
+              line-height: 24px;
+              color: $text-color;
+              margin-top: 8px;
+            }
+          }
+        }
+      }
+
+      .event-contact {
+        gap: 20px;
+        max-width: 400px;
+
+        @include respond-to('small') {
+          width: 100%;
+          margin-top: 3rem;
+        }
+
+        h3 {
+          font-size: 1rem;
+          font-family: "GilroyBold", sans-serif;
+          line-height: 24px;
+          margin-bottom: 20px;
+        }
+
+        .social-icon {
+          display: flex;
+          gap: 24px;
+          margin-bottom: 50px;
+        }
+
+
+        .leaflet-container {
+          height: 492px;
+        }
+
+        .map {
+          width: 400px;
+          height: 492px;
+
+          @include respond-to('small') {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
