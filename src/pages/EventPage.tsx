@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { EventContext } from '../context/EventContextProvider';
 import { format, parseISO } from 'date-fns';
 import { enUS } from 'date-fns/locale';
@@ -27,6 +27,9 @@ const EventPage = () => {
     }
   }, [context?.events, id]);
 
+  if (!event) {
+    return <div>🧐 Network Error, kindly refresh 🔃</div>;
+  }
 
   const formatDate = (dateString: string) => {
     const date = parseISO(dateString);
@@ -112,9 +115,15 @@ const EventPage = () => {
               Contact Organizers
             </h3>
             <div className="social-icon">
-              <MailIcon />
-              <TwitterIcon />
-              <InstagramIcon />
+              <Link to={event.organizer.email} aria-label="Email">
+                <MailIcon />
+              </Link>
+              <Link to={event.organizer.twitterUrl} target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                <TwitterIcon />
+              </Link>
+              <Link to={event.organizer.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <InstagramIcon />
+              </Link>
             </div>
 
             <h3>
